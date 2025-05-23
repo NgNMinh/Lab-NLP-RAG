@@ -26,7 +26,7 @@ llm = ChatGoogleGenerativeAI(
 # Embeddings configuration
 embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
 
-client = MongoClient("mongodb+srv://mongodb:supersecret@cluster0.wvspy.mongodb.net")
+client = MongoClient(os.getenv("MONGO_URI"))
 collection = client["NLK-PD"]["lab_data"]  # thay "your_collection_name" bằng tên collection thực tế
 
 # Xóa dữ liệu cũ trong collection
