@@ -42,18 +42,6 @@ GEMINI_API_KEY=your_api_key_here
 3. Tạo API key mới
 4. Copy API key và dán vào file `.env`
 
-## Cấu trúc dự án
-
-```
-Lab-NLP-RAG/
-├── config.py          # Cấu hình chính
-├── api.py            # API endpoints
-├── agent.py          # Logic của agent
-├── tools.py          # Các công cụ hỗ trợ
-├── requirements.txt  # Dependencies
-└── README.md         # Tài liệu hướng dẫn
-```
-
 ## Sử dụng
 
 1. Đảm bảo đã kích hoạt môi trường ảo
