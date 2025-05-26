@@ -3,6 +3,10 @@ from langchain_core.tools import tool
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from config import vector_store
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 @tool(response_format="content_and_artifact")
 def retrieve(query: str):
@@ -19,7 +23,7 @@ def search_paper(author: Optional[Literal["Lê Anh Cường", "Trần Thanh Phư
     '''
     Search paper of TDTU 
     '''
-    client = MongoClient("mongodb+srv://mongodb:supersecret@cluster0.wvspy.mongodb.net/NLK-PD")
+    client = MongoClient(os.getenv("MONGO_URI"))
     db = client["NLK-PD"]
 
     query = {}
