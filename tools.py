@@ -3,11 +3,14 @@ from langchain_core.tools import tool
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from config import vector_store
+import os
 
 @tool(response_format="content_and_artifact")
 def retrieve(query: str):
     """Retrieve information related to NLP & KD Lab TDTU like introduction, lab staff, contact address"""
+    print(f"Retrieving information for query: {query}")
     retrieved_docs = vector_store.similarity_search(query, k=2)
+    print(retrieved_docs)
     serialized = "\n\n".join(
         (f"Source: {doc.metadata}\n" f"Content: {doc.page_content}")
         for doc in retrieved_docs
@@ -19,7 +22,7 @@ def search_paper(author: Optional[Literal["Lê Anh Cường", "Trần Thanh Phư
     '''
     Search paper of TDTU 
     '''
-    client = MongoClient("mongodb+srv://mongodb:supersecret@cluster0.wvspy.mongodb.net/NLK-PD")
+    client = MongoClient(os.getenv("MONGO_URI"))
     db = client["NLK-PD"]
 
     query = {}
