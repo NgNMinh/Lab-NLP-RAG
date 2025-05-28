@@ -34,7 +34,7 @@ touch .env
 2. Thêm API key của Google Gemini vào file `.env` và đường dẫn Mongodb:
 ```
 GEMINI_API_KEY=your_api_key_here
-MONGO_URL=your_url_here
+MONGO_URI=your_url_here
 ```
 
 Để lấy API key:
