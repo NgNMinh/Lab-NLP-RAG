@@ -11,7 +11,9 @@ load_dotenv()
 @tool(response_format="content_and_artifact")
 def retrieve(query: str):
     """Retrieve information related to NLP & KD Lab TDTU like introduction, lab staff, contact address"""
+    print(f"Retrieving information for query: {query}")
     retrieved_docs = vector_store.similarity_search(query, k=2)
+    print(retrieved_docs)
     serialized = "\n\n".join(
         (f"Source: {doc.metadata}\n" f"Content: {doc.page_content}")
         for doc in retrieved_docs
@@ -38,7 +40,7 @@ def search_paper(author: Optional[Literal["Lê Anh Cường", "Trần Thanh Phư
     elif author == "Hồ Thị Linh":
         query["owner_id"] = ObjectId("682bdb2df7c406761c467da1")
 
-    if year:
+    if year: 
         query["publicationDate"] = year
 
     results = list(db.publications.find(query).limit(5))
