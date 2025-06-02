@@ -18,9 +18,7 @@ def is_valid_email(email: str) -> bool:
 @tool(response_format="content_and_artifact")
 def retrieve(query: str):
     """Retrieve information related to NLP & KD Lab TDTU like introduction, lab staff, contact address"""
-    print(f"Retrieving information for query: {query}")
     retrieved_docs = vector_store.similarity_search(query, k=2)
-    print(retrieved_docs)
     serialized = "\n\n".join(
         (f"Source: {doc.metadata}\n" f"Content: {doc.page_content}")
         for doc in retrieved_docs
