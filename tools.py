@@ -57,7 +57,7 @@ def get_all_personnel() -> dict:
     """
     Get all personnel users 
     """
-    url = "http://localhost:3000/api/v1/users/personnel"
+    url = "http://localhost:3000/users/api/v1/personnel"
     
     # Nếu API không cần xác thực
     response = requests.get(url)
@@ -78,7 +78,7 @@ def get_all_intern() -> dict:
     """
     Get all intern users 
     """
-    url = "http://localhost:3000/api/v1/users/intern"
+    url = "http://localhost:3000/users/api/v1/intern"
     
     # Nếu API không cần xác thực
     response = requests.get(url)
